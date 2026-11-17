@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="zh-tw">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<head>
+	<!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-VRSEMH48ZM"></script> <script>   window.dataLayer = window.dataLayer || [];   function gtag(){dataLayer.push(arguments);}   gtag('js', new Date());   gtag('config', 'G-VRSEMH48ZM'); </script>
+  <link rel="SHORTCUT ICON" href="images/compal-wbe-logo.ico" />
+  <meta name="Generator" content="" />
+  <meta name="Author" content="haco 吳淑玲 hacodog@gmail.com" />
+  <meta name="copyright" content="本網頁著作所有">
+  <meta name="Keywords" content="仁寶園地" />
+  <meta name="Description" content="這是屬於仁寶人的園地" />
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>讓 Burn-in 機台自己「說話」</title>
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+
+  <link rel="stylesheet" href="css/115-style.css" type="text/css" />
+  <link rel="stylesheet" href="css/3-1-style.css" type="text/css" />
+
+  <!--[if gte IE 5]>
+    <style>
+    #container {
+    	margin-left: -401px;
+    }
+    </style>
+    <![endif]-->
+  <style type="text/css">
+    <!--
+    body {
+      background-image: url(images/bg_2.gif);
+      background-repeat: repeat-x;
+      background-position: top;
+      background-color: #FFF;
+    }
+    -->
+  </style>
+</head>
+
+<body>
+  <div id="container_header" style="width: 100%;">
+
+    <div id="header_ch" style="width: 100%; position: relative; z-index: 9999; height: 185px;">
+      <iframe src="topframe.html" width="100%" height="240" marginwidth="0" marginheight="240" scrolling="no"
+        frameborder="0" align="center" style="position: absolute; top: 0; left: 0; background: transparent;"
+        allowtransparency="true"></iframe>
+    </div>
+  </div>
+  <!-- Master Container: Centered and 900px wide -->
+  <div id="container">
+    <!-- The top bar -->
+
+
+   <div id="topbanner">專￭業￭新￭知</div>
+    <div id="content">
+      <div id="mainEntryTitle">
+        <div id="mainEntryTitleleft6">讓 Burn-in 機台自己「說話」</div>
+        <div id="mainEntryTitleright">曾錦富│IPC研發二處＼產品系統整合部</div>
+      </div>
+      <div id="compal-body">
+		  <p><br></p>
+		  
+        <table width="100%">
+          <tr>
+            <td colspan="2" align="center" valign="top">
+
+             
+				<p class="compal-bodytext2-4">在做產品測試的過程中，有一個問題一直都存在，只是平常大家可能已經習慣了。</p>
+ <p class="compal-bodytext2-4">
+工控的產品通常是帶接螢幕的，當然也不可能在 Burn-in 時每一台都接一台螢幕。BurnInTest 一跑可能就是幾個小時，甚至兩、三天以上。這段期間如果測試中途已經發生 Error，其實現場人員很難第一時間知道。</p>
+ <p class="compal-bodytext2-4">
+	 很多時候，要等到測試時間結束，再接上螢幕、查看 BurnInTest 的結果，才發現這台機器其實早在幾個小時前就已經 <font color="#DE0003">Fail</font> 了。</p>
+ <p class="compal-bodytext2-4">
+	 這樣的結果就是，中間有一大段時間其實是在做「沒有意義的等待」。這也是我一開始想做這個治具最主要的原因。</p>
+ <p class="compal-bodytext2-4">
+我想解決的，不只是「做一顆 USB 燈」，而是希望一台沒有螢幕的機台在 Burn-in 時，也能很直接地告訴現場人員：「我現在還在正常測試、我已經測試完成，或是我已經出問題了。」
+</p>
+
+              <p class="compal-bodytext2-4-1"><strong><span class="diamond-icon">♦︎</span>一開始的想法其實很簡單</strong></p>
+ <p class="compal-bodytext2-4-line"></p>
+              <p class="compal-bodytext2-4">最早我的想法只是做一個 USB dongle。<br>
+BurnInTest 如果正常，就亮綠燈；如果發生 Error，就亮紅燈。<br>
+			  這樣現場人員走過一排正在做 Burn-in 的機台，不需要接螢幕，也不需要進 Windows 看程式，只要看燈號就可以知道哪一台有問題。</p>
+ <p class="compal-bodytext2-4">
+但真正開始做之後，才發現事情沒有只是「紅燈、綠燈」這麼簡單。
+例如：<br>
+• 如果 Windows 整個 hang 住了呢？<br>
+• 如果 BurnInTest 掛掉了呢？<br>
+• 如果監控 BurnInTest 的程式自己 crash 了呢？</p>
+ <p class="compal-bodytext2-4">
+這些情況最大的問題是，系統甚至沒有機會送出「Error」這個訊息。<br>
+如果 dongle 只是被動等待機台告訴它「有Error」，系統一旦真的掛掉，反而可能一直停留在綠燈。這就失去這個治具原本的意義了。
+</p>
+
+              <p class="compal-bodytext2-4-1"><strong><span class="diamond-icon">♦︎</span>最終的架構</strong></p>
+ <p class="compal-bodytext2-4-line"></p>
+              <p class="compal-bodytext2-4">目前整套架構其實不複雜。<br>
+BurnInTestV11 可設定固定時隔紀錄 testlog，待測機台端安裝一支監控的小程式，負責讀取這個 log，再把目前狀態透過 USB 傳給 dongle。</p>
+<p class="compal-bodytext2-4">
+運作流程大概是：<br>
+	BurnInTest11→Testlog→Monitor程式→USBHID→MCU→RGBLED</p>
+<p class="compal-bodytext2-4">
+Dongle 的主控制器使用 CH552G，再搭配一顆 WS2812B-2020 RGB LED。<br>
+我最後選擇 USB HID，而不是一般 COM Port，主要原因是 HID 在 Windows 本身就有 driver，不需要另外安裝。且如果使用 COM Port，會遇到 COM18、COM19、COM20 這類 port number 不固定的問題。改成 HID 後，程式可以直接辨識 dongle，不需要管它插在哪一個 USB Port。對量產或工廠使用來說，這樣會簡單很多。
+</p>
+              
+              <p class="compal-bodytext2-4-1"><strong><span class="diamond-icon">♦︎</span>燈號最後怎麼定義</strong></p>
+ <p class="compal-bodytext2-4-line"></p>
+              <p class="compal-bodytext2-4">一開始我只有想過紅燈和綠燈，後來實際測試之後，覺得還是需要把不同狀態區分得更清楚。<br>
+				  
+目前最終版的燈號定義是：<br>
+ • 藍燈常亮：Dongle 已經插入，目前等待 BurnInTest 開始。<br>
+ • 綠呼吸燈：BurnInTest 正在執行中。<br>
+				  • 綠燈常亮：BurnInTest 已經完成，而且結果是 <font color="#1907E7">PASS</font>。<br>
+				  • 紅燈常亮：測試過程中出現 Error，或者最後結果是 <font color="#DE0003">FAIL</font>。<br>
+		      • 紅燈閃爍：系統hang住、監控程式停止運作或BurnInTest長時間沒有反應。</p>
+<p class="compal-bodytext2-4">
+這裡有一個我自認為很重要的設計。<br>
+一開始 running 也是想用綠燈常亮，但這樣從遠處看，很容易把「正在測試」誤認成「已經 PASS」。於是把 running 改成綠色呼吸燈，而 PASS 才使用綠燈常亮。<br>
+呼吸燈的速度我也有特別調整，不讓它變化得太慢，避免人員遠看時誤以為是一顆恆亮的綠燈。
+</p>
+
+              <p class="compal-bodytext2-4-1"><strong><span class="diamond-icon">♦︎</span>不只是看Error，還要知道系統是不是「活著」</strong></p>
+ <p class="compal-bodytext2-4-line"></p>
+              <p class="compal-bodytext2-4">這個治具後來最重要的功能，其實是 Heartbeat。<br>
+當 BurnInTest 開始執行後，監控程式會固定每 5 秒送一次 Heartbeat 給 MCU。<br>
+只要 Heartbeat 持續存在，Dongle 就知道待測機台端的監控程式還正常工作。<br>
+				  如果超過 30 秒沒有收到 Heartbeat，Dongle 就會自己判定系統可能有異常，直接進入紅燈閃爍。</p>
+<p class="compal-bodytext2-4">
+換句話說，就算 Windows 已經當掉，甚至待測機台端程式根本沒有機會送 Error，只要 USB 5V 還存在，Dongle 還是可以自己做出異常判斷。<br>
+	BurnInTest 的 log 預設是每 10 分鐘記錄一次，這很好，因為有些 Burn-in 測試可能長達兩、三天，甚至更久，如果 log 更新太頻繁，檔案會變得很大。</p>
+<p class="compal-bodytext2-4">
+	所以監控程式設定成如果超過 15 分鐘都沒有看到 log 更新，也會停止 Heartbeat，再由 MCU 自己的 30 秒 timeout 判定為異常。</p>
+<p class="compal-bodytext2-4">
+以上的設計邏輯就能同時監控：<br>
+ • Windows 是否正常。<br>
+ • 監控程式是否正常。<br>
+ • BurnInTest 是否還有在工作。
+</p>
+              
+				<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td align="center"><img src="images/5-2/01.gif" alt="" width="875" border="0" /></td>
+          </tr>
+			
+			        
+        </table>
+				<p class="compal-bodytext2-4-1"><strong><span class="diamond-icon">♦︎</span>實作過程遇到不少問題</strong></p>
+
+ <p class="compal-bodytext2-4-line"></p>
+			
+
+              <p class="compal-bodytext2-4">這個專案從最早的想法到完成，其實中間也遇到不少小問題。<br>
+&nbsp; &nbsp; &nbsp;1.	一開始先使用 USBCDC 測試，功能是正常的，但後來考慮到 COMPort 會變動，所以才決定改成 HID。<br>
+&nbsp; &nbsp; &nbsp;2.	BurnInTest 的 log 看起來只是一般文字檔，但實際上是 UTF-16 編碼。一開始程式使用 UTF-8 去讀，雖然檔案可以打開，但是一直偵測&nbsp; &nbsp; &nbsp; &nbsp;不到 SERIOUS:，最後才找到是編碼造成的問題。<br>
+&nbsp; &nbsp; &nbsp;3.	還有 WS2812B 在 USB 剛插入時，MCU 太快送出第一筆資料，LED 有時還沒有準備好，所以 PowerOn 時不會正常顯示藍燈。後來在&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;firmware 加入一小段延遲，等 LED 電源穩定之後再送資料，問題才解決。</p>
+				 <p class="compal-bodytext2-4">
+這些問題本身都不算大，但其實就是開發過程中需要一步一步確認的地方。
+</p>
+			  
+             
+						
+              <p class="compal-bodytext2-4-1"><strong><span class="diamond-icon">♦︎</span>這個 Dongle 真正帶來的價值</strong></p>
+
+ <p class="compal-bodytext2-4-line"></p>
+
+              <p class="compal-bodytext2-4">目前看起來，它就是一塊很小的 PCB、一顆 MCU 加上一顆 RGB LED。<br>
+				  但對 Burn-in 測試現場來說，它真正改善的是「異常可視性」。</p>
+<p class="compal-bodytext2-4">
+	過去，沒有螢幕的待測機台在測試期間發生 Error，往往要等測試時間到了才能揭曉結果。現在只要 dongle 燈一變紅，人員經過時就能直接發現。</p>
+<p class="compal-bodytext2-4">
+	如果一整排機台正在測試，從遠處就可以直接看哪些機台正在 Running、哪些已經 PASS、哪些已經 Fail、或者哪些可能系統掛掉了。不需要一台一台接螢幕確認。</p>
+<p class="compal-bodytext2-4">
+另外，這個 dongle 本身不需要額外安裝 driver，硬體也很簡單，未來如果要複製到多台 Burn-in station，成本和維護都不高。
+
+</p>  
+             <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td align="center"><img src="images/5-2/02.png" alt="" width="875" border="0" /></td>
+          </tr>
+			
+			        
+        </table>
+									<p class="compal-bodytext2-4-1"><strong><span class="diamond-icon">♦︎</span>總結</strong></p>
+
+ <p class="compal-bodytext2-4-line"></p>
+
+				<p class="compal-bodytext2-4">這個作品一開始只是來自一個很簡單的想法：</p>
+<p class="compal-bodytext2-4">
+	「沒有螢幕的Burn-in機台，能不能主動告知現在有沒有發生問題？」</p>
+<p class="compal-bodytext2-4">
+最後從一顆單純的狀態燈，慢慢加入 USB HID、Log monitor、Heartbeat、Timeout、Error latch，到目前已經變成一套完整的 Burn-in 狀態指示機制。</p>
+<p class="compal-bodytext2-4">
+	對我來說，它並不是一顆USB燈而已。它真正意義是：</p>
+<p class="compal-bodytext2-4">
+「把原本藏在 log 裡、必須接上螢幕才看得到的資訊，直接變成主動招手的燈號。」
+</p>
+
+			  </td>
+			</tr>
+		  </table>
+			</div>
+
+    </div>
+    <!--
+<div id="footer"></div>
+     end #footer -->
+  </div>
+  <!-- end #container -->
+</body>
+
+</html>

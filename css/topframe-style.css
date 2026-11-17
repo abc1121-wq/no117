@@ -1,0 +1,435 @@
+/* CSS Document - Author: Shaibal Mandal */
+
+
+body {
+	font-size: 14px;
+	margin: 0px;
+
+
+
+
+
+
+	padding-left: ;
+	background-color: transparent;
+	background-repeat: repeat-y;
+	width: 100%;
+	pointer-events: none; /* Let clicks pass through transparent body */
+}
+
+/* This is the page container  */
+#container {
+	width: 925px;
+	background-color: #FFFFFF;
+	height: 298px;
+}
+
+#container_ch {
+	width: 100%;
+	background-color: transparent;
+	height: 60px;
+}
+
+
+
+#A1_ch {
+	width: 204px;
+	height: 80px;
+	float: left;
+}
+
+/* For taming those leeeeeeetle arrows */
+img {
+	vertical-align: text-bottom;
+}
+
+/* Style-up those ugly default hyperlinks */
+a {
+	text-decoration: none;
+	padding: 0;
+	margin: 0;
+	color: #3D3D3D;
+}
+
+/* And their ugly hover states too */
+a:link {
+	color: #3D3D3D;
+	border-bottom: 0px solid #fff;
+	background: transparent;
+}
+
+a:visited {
+	color: #3D3D3D;
+	border-bottom: 0px solid #fff;
+	background: transparent;
+}
+
+a:hover {
+	color: #488E48;
+	border-bottom: 0px solid #fff;
+	background: transparent;
+}
+
+
+#header {
+	width: 925px;
+	background-color: #FFFFFF;
+	border-bottom-width: 0px;
+	border-bottom-style: dotted;
+	border-bottom-color: #000;
+	height: 298px;
+
+}
+
+
+
+#headerlogo {
+	background-color: #FFFFFF;
+	width: 925px;
+	float: left;
+	height: 258px;
+	background-position: center;
+
+}
+
+#headerslogan {
+	font-size: 11px;
+	color: #FFFFFF;
+	width: 340px;
+	background-color: #73bf45;
+	height: 20px;
+	float: left;
+	padding: 2px -20px 2px 20px;
+	font-weight: normal;
+	text-align: left;
+	letter-spacing: 18px;
+
+}
+
+
+#topbarmenu {
+	font-size: 14px;
+	background-color: #000;
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #000;
+	left: 25px;
+	top: 140px;
+	width: 925px;
+	vertical-align: text-top;
+	border-top-width: 1px;
+	border-top-color: #FFF;
+	border-top-style: solid;
+	height: 40px;
+
+}
+
+#topbarmenu_ch {
+	font-size: 14px;
+	background-color: #FFF;
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFF;
+	width: 925px;
+	vertical-align: text-top;
+	border-top-width: 1px;
+	border-top-color: #FFF;
+	border-top-style: solid;
+	height: 114px;
+/* 這裡加入陰影 */
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1); 
+    
+    /* 確保陰影不會被遮住，視情況增加層級 */
+    z-index: 999; 
+    
+    /* 如果背景是透明的，建議給個底色，陰影才明顯 */
+    background-color: #ffffff; 
+    pointer-events: auto; /* Re-enable clicks for the actual menu */
+}
+
+#topbarmenu_ch1 {
+	font-size: 14px;
+	background-color: #FFF;
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFF;
+	width: 925px;
+	vertical-align: text-top;
+	border-top-width: 1px;
+	border-top-color: #FFF;
+	border-top-style: solid;
+	height: 80px;
+
+}
+
+
+
+p span {
+	font-size: 30px;
+	float: left;
+	padding-right: 5px;
+	font-family: Arial, MS Gothic, Helvetica, sans-serif;
+	color: #3D3D3D;
+}
+
+
+#topmonth {
+	font-size: 12px;
+	background: #FFFFFF;
+	padding: 0px;
+
+
+
+
+
+	font-weight: normal;
+	color: #3D3D3D;
+	text-align: right;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+
+
+#menu {
+	list-style: none;
+	position: relative;
+	width: auto;
+	float: none;
+	text-align: center;
+	background-position: center;
+	padding-top: 35px;
+	padding-right: 0;
+	padding-bottom: 0;
+	font-family: "微軟正黑體";
+	font-size: 16px;
+	top: 4px;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 0px;
+	padding-left: 250px;
+}
+
+
+#menu2 {
+	list-style: none;
+	position: relative;
+	width: 100%;
+	float: none;
+	text-align: left;
+	background-position: center;
+	padding-top: 25px;
+	padding-right: 0;
+	padding-bottom: 0;
+	font-family: "微軟正黑體";
+	font-size: 16px;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
+#menu li {
+	margin: 0;
+	padding: 0;
+	float: left;
+	border-right: 0px solid #FFFFFFF;
+	text-align: center;
+	width: 110px;
+	border-bottom-width: medium;
+}
+
+#menu li2 {
+	margin: 0;
+	padding: 0;
+	padding-top: 5px;
+	float: left;
+	border-right: 0px solid #FFFFFFF;
+	text-align: center;
+	width: 40px;
+	border-bottom-width: medium;
+}
+
+#menu li3 {
+	margin: 0;
+	padding: 0;
+	float: left;
+	border-right: 0px solid #FFFFFFF;
+	text-align: center;
+	width: 100px;
+	border-bottom-width: medium;
+}
+
+#menu li4 {
+	margin: 0;
+	padding: 0;
+	padding-top: 7px;
+	float: left;
+	border-right: 0px solid #FFFFFFF;
+	text-align: center;
+	width: 100px;
+	border-bottom-width: medium;
+}
+
+#menu2 li5 {
+	margin: 0;
+	padding: 0;
+	padding-top: 28px;
+	float: left;
+	border-right: 0px solid #FFFFFFF;
+	text-align: center;
+	width: 200px;
+	border-bottom-width: medium;
+
+}
+
+
+#menu li6 {
+	margin: 0;
+	padding: 0;
+	padding-top: 28px;
+	float: left;
+	border-right: 0px solid #FFFFFFF;
+	text-align: center;
+	width: 240px;
+	border-bottom-width: medium;
+
+}
+
+
+
+
+#menu li a {
+	padding-top: 7px;
+	padding-right: 0px;
+	padding-bottom: 2px;
+	display: block;
+	color: #000;
+	text-decoration: none;
+}
+
+#menu li3 a {
+	padding-top: 7px;
+	padding-right: 0px;
+	padding-bottom: 2px;
+	display: block;
+	color: #000;
+	text-decoration: none;
+}
+
+
+
+
+#menu li a:link {
+	color: #000;
+	border-bottom: 0 none #51BD12;
+	background: transparent;
+}
+
+#menu li a:visited {
+	color: #000;
+	border-bottom: 0px solid #fff;
+	background: transparent;
+}
+
+#menu li:hover > a,
+#menu li a:hover {
+	color: #488E48;
+	border-bottom: 3px solid #51BD12;
+}
+
+#menu li a.header-btn {
+	display: inline-block;
+	padding: 5px 18px 7px 18px;
+	margin-top: 2px;
+	background-color: #268300; /* Dark green from image */
+	color: #ffffff !important;
+	border-radius: 20px;
+	border-bottom: none;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+#menu li:hover > a.header-btn,
+#menu li a.header-btn:hover {
+	background-color: #2EB945; /* Lighter on hover */
+	color: #ffffff !important;
+	border-bottom: none;
+}
+
+#menu li3 a:link {
+	color: #000;
+	border-bottom: 0 none #51BD12;
+	background: transparent;
+}
+
+#menu li3 a:visited {
+	color: #000;
+	border-bottom: 0px solid #fff;
+	background: transparent;
+}
+
+#menu li3 a:hover {
+	color: #488E48;
+	border-bottom: 4px solid #51BD12;
+}
+
+/* Dropdown styling */
+#menu li.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+#menu .dropdown-content {
+	display: none;
+	position: relative;
+	background-color: #ffffff;
+	min-width: 123px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	z-index: 9999;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+	border-radius: 0;
+	padding: 2px 0;
+
+}
+
+#menu li .dropdown-content a {
+	color: #555555 !important;
+	padding: 7px 20px;
+	text-decoration: none;
+	display: block;
+	font-size: 14px;
+	
+	transition: all 0.2s ease-in-out;
+}
+
+#menu li .dropdown-content a:last-child {
+	border-bottom: none !important;
+}
+
+#menu li .dropdown-content a:hover {
+	background-color: #fafafa;
+	color:  #488E48 !important;
+	border-bottom: 0px solid #f4f4f4 !important;
+	padding-left: 25px;
+}
+
+#menu li .dropdown-content a:last-child:hover {
+	border-bottom: none !important;
+}
+
+#menu li.dropdown:hover .dropdown-content {
+	display: block;
+}

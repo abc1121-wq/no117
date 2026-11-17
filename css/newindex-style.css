@@ -1,0 +1,219 @@
+﻿/*請勿擅自修改 by haco吳淑玲*/
+
+/* CSS Document - Author: Shaibal Mandal */
+
+/* 整體設定、背景、段落、字體*/
+body {
+	font-size: 14px;
+	font-family: 微軟正黑體, 標楷體, 細明體, Arial, MS Gothic, Helvetica, sans-serif;
+	margin: 0px;
+	table-layout: fixed;
+	word-wrap: break-word;
+	word-break: normal;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	background-color: #f2f2f3;
+	background-repeat: repeat-y;
+	background-position: right;
+}
+
+.indextitle {
+	width: 925px;
+	font-size: 18px;
+	font-weight: bold;
+	background-color: #FFF;
+	height: 28px;
+	margin: 0px;
+	padding-top: 5px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	text-align: center;
+}
+
+.indextitle2 {
+	width: 925px;
+	font-size: 12px;
+	color: #808080;     
+	font-weight:0px ;
+	background-color: #FFF;
+	height: 10px;
+	margin: 0px;
+	padding-top: 5px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	text-align: center;
+}
+
+.indextitle3 {
+		width: 925px;
+	font-size: 18px;
+	font-weight: bold;
+	background-color: #FFF;
+	height: 35px;
+	margin: 0px;
+	padding-top: 15px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	text-align: center;
+
+}
+
+.gray-line {
+
+  border-bottom: 1.8px solid #ccc; /* 灰色實線 */
+  width: 850px;                /* 控制線的長度 */
+  margin: 25px auto;           /* 置中與間距 */
+}
+
+.gray-line2 {
+
+  border-bottom: 1.8px solid #ccc; /* 灰色實線 */
+  width: 600px;                /* 控制線的長度 */
+  margin: 15px auto;           /* 置中與間距 */
+}
+
+.image-container {
+  display: flex;               
+  justify-content: space-between; 
+  gap:50px;                    
+  text-align: center;
+}
+
+.image-container img {
+  width: 225px;   /* 讓三張圖片均分寬度，並扣除間距 */
+  height: 225px;                 /* 保持比例 */
+	
+}
+
+/* 讓每一組圖片+文字並排 */
+.image-container {
+  display: flex;
+  justify-content: space-between; /* 均勻分配間距 */
+  gap: 15px; /* 圖片組之間的間隔 */
+}
+
+.img-item {
+  flex: 1; /* 讓三組等寬 */
+  text-align: center; /* 文字置中 */
+}
+
+.img-item img {
+  width: 225px; 
+  height: 225px;
+  display: block;
+  margin: 0 auto 10px; 
+  object-fit: cover;    
+}
+
+.img-item6 img {
+  width: 225px; 
+  height: 225px;
+  display: block;
+  margin: 0 auto 10px; 
+  object-fit: cover;    
+}
+
+.img-item2 img {
+  width: 600px; 
+  height: 150px;
+  display: block;
+  margin: 0 auto 10px; 
+  object-fit: cover;   
+}
+
+
+
+/* 第一行文字：標題 */
+.img-caption {
+  font-size: 14px;
+  color: #000;
+  font-weight: normal;
+  margin-top: 0px;
+  margin-bottom: 2px;
+	
+}
+
+.img-caption3 {
+  font-size: 14px;
+  color: #000;
+  font-weight: normal;
+  margin-top: 4px;
+  margin-bottom: 2px;
+	
+}
+
+.img-caption a {
+  font-size: 14px;
+  color: #000;         /* 預設黑色 */
+  font-weight: normal;
+  text-decoration: none; /* 移除底線 */
+}
+
+/* 2. 設定滑鼠移上去時的顏色 */
+.img-caption a:hover {
+  color: #188817;      /* 可自行修改色碼 */
+  text-decoration: underline; /* 移上去顯示底線 (可選) */
+}
+
+.img-caption3 a {
+  font-size: 14px;
+  color: #000;         /* 預設黑色 */
+  font-weight: normal;
+  text-decoration: none; /* 移除底線 */
+}
+
+/* 2. 設定滑鼠移上去時的顏色 */
+.img-caption3 a:hover {
+  color: #188817;      /* 可自行修改色碼 */
+  text-decoration: underline; /* 移上去顯示底線 (可選) */
+}
+
+
+.img-caption2 {
+  font-size: 12px;
+  color: #000;
+  font-weight: normal;
+  margin-top: 0px;
+  margin-bottom: 2px;
+}
+
+/* 第二行文字：小字敘述 */
+.img-desc {
+  color: #009900;    
+  font-size: 12px;   
+  margin: -1px;       
+
+}
+
+/* 確保容器內的文字都置中 */
+.img-item {
+  text-align: center;
+}
+
+/* 外層容器：負責讓所有卡片並排並置中 */
+.feature-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px; /* 項目之間的間距 */
+ 
+}
+
+/* 單個項目：負責內容物垂直置中 */
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 200px; /* 可固定寬度讓排列更整齊 */
+}
+
+/* 文字連結樣式 */
+
+.feature-link:hover {
+  color: #188817; 
+  text-decoration: underline;
+}
